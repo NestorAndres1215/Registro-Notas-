@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Notas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            margin-top: 20px;
+        }
+        .form-row {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Registro de Notas</h1>
+
+        <form id="formNotas">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="curso">Curso:</label>
+                    <input type="text" class="form-control" id="curso" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="examen1">Examen 1:</label>
+                    <input type="number" class="form-control" id="examen1" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="examen2">Examen 2:</label>
+                    <input type="number" class="form-control" id="examen2" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="examen3">Examen 3:</label>
+                    <input type="number" class="form-control" id="examen3" required>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="examen4">Examen 4:</label>
+                    <input type="number" class="form-control" id="examen4" required>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="btnAgregar">Agregar Nota</button>
+        </form>
+
+        <table class="table table-bordered mt-4">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Curso</th>
+                    <th>Examen 1</th>
+                    <th>Examen 2</th>
+                    <th>Examen 3</th>
+                    <th>Examen 4</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaNotas">
+                <!-- Las filas se agregarán aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('btnAgregar').addEventListener('click', agregarNota);
+
+        function agregarNota() {
+            // Obtener los valores ingresados
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const curso = document.getElementById('curso').value;
+            const examen1 = parseFloat(document.getElementById('examen1').value) || 0;
+            const examen2 = parseFloat(document.getElementById('examen2').value) || 0;
+            const examen3 = parseFloat(document.getElementById('examen3').value) || 0;
+            const examen4 = parseFloat(document.getElementById('examen4').value) || 0;
+
+            // Calcular el total
+            const total = (examen1 + examen2 + examen3 + examen4)/4;
+
+            // Determinar el estado según el total
+            const estado = (total > 13) ? "APROBADO" : "DESAPROBADO"; // Umbral de aprobación
+
+            // Crear una nueva fila para la tabla
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.innerHTML = `
+                <td>${nombre}</td>
+                <td>${apellido}</td>
+                <td>${curso}</td>
+                <td>${examen1}</td>
+                <td>${examen2}</td>
+                <td>${examen3}</td>
+                <td>${examen4}</td>
+                <td>${total}</td>
+                <td>${estado}</td>
+            `;
+
+            // Agregar la nueva fila a la tabla
+            document.getElementById('tablaNotas').appendChild(nuevaFila);
+
+            // Limpiar los campos de texto
+            document.getElementById('formNotas').reset();
+        }
+    </script>
+
+</body>
+</html>
