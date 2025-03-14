@@ -43,11 +43,3 @@ El **Sistema de Registro de Notas** es una aplicación web diseñada para facili
 ## Tecnologías Utilizadas
 - **Frontend**: HTML, CSS (Bootstrap), JavaScript.
 - **Interactividad**: Uso de JavaScript para manejar eventos y realizar cálculos en el cliente.
-
-## Beneficios
-- Mejora la eficiencia del proceso de registro de notas.
-- Permite a los docentes llevar un control más riguroso del desempeño académico de los estudiantes.
-- Facilita la identificación de estudiantes que necesitan apoyo adicional.
-
-## Conclusiones
-El Sistema de Registro de Notas es una herramienta útil para educadores que desean simplificar el proceso de registro y seguimiento de las calificaciones de sus estudiantes, mejorando así la administración educativa.
